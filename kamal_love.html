@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Truth Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 400px; margin: auto; }
+    button { margin: 5px 0; padding: 10px; width: 100%; font-size: 16px; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>💘 Love Truth Game 💘</h1>
+  <div id="quiz"></div>
+  <div id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        question: "Who does Sanjana love?",
+        options: ["Singh", "kamal", "Rahul"],
+        answer: "Singh"
+      },
+      {
+        question: "Who does Singh love?",
+        options: ["Sanjana", "Neha", "kamal"],
+        answer: "Sanjana"
+      },
+      {
+        question: "Who does kamal love?",
+        options: ["Neha", "Sanjana", "Sanjana Kapoor"],
+        answer: "Sanjana"
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function showQuestion() {
+      if (current >= questions.length) {
+        document.getElementById('quiz').innerHTML = `<h2>Game Over! You scored ${score} / ${questions.length}</h2>`;
+        return;
+      }
+      const q = questions[current];
+      let html = `<p><strong>Q${current + 1}:</strong> ${q.question}</p>`;
+      q.options.forEach((opt, idx) => {
+        html += `<button onclick="checkAnswer('${opt}')">${idx + 1}. ${opt}</button>`;
+      });
+      document.getElementById('quiz').innerHTML = html;
+      document.getElementById('result').innerHTML = '';
+    }
+
+    function checkAnswer(selected) {
+      if (selected === questions[current].answer) {
+        score++;
+        document.getElementById('result').innerText = "✅ Correct!";
+      } else {
+        document.getElementById('result').innerText = `❌ Wrong! Correct answer: ${questions[current].answer}`;
+      }
+      current++;
+      setTimeout(showQuestion, 1500);
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
