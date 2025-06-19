@@ -63,8 +63,9 @@
   <div id="quiz"></div>
   <div id="result"></div>
 
-  <audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
-  <audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+  <!-- Flirty sound effects -->
+  <audio id="correctSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio> <!-- Kiss sound -->
+  <audio id="wrongSound" src="https://www.fesliyanstudios.com/play-mp3/6987"></audio> <!-- Gasp sound -->
 
   <script>
     const questions = [
@@ -82,6 +83,16 @@
         question: "💘 Who does Kamal love?",
         options: ["Neha", "Sanjana", "Sanjana Kapoor"],
         answer: "Sanjana"
+      },
+      {
+        question: "🍕 Kamal and Sanjana went out to eat pizza worth $20. How much does Sanjana owe?",
+        options: ["$20", "$10", "It's Free"],
+        answer: "It's Free"
+      },
+      {
+        question: "🏞️ Who paid for the Blue Mountains trip?",
+        options: ["Sanjana", "Chotu", "Kamal"],
+        answer: "Kamal"
       }
     ];
 
@@ -119,13 +130,13 @@
 
       if (correct) {
         score++;
-        document.getElementById('result').innerText = "✅ Correct! You're on fire!";
+        document.getElementById('result').innerText = "💋 Mwah! Correct!";
       } else {
-        document.getElementById('result').innerText = `❌ Oops! Right answer: ${questions[current].answer}`;
+        document.getElementById('result').innerText = `😮 Oops! Right answer: ${questions[current].answer}`;
       }
 
       current++;
-      setTimeout(showQuestion, 1800);
+      setTimeout(showQuestion, 2000);
     }
 
     function restartGame() {
